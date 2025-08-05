@@ -7,6 +7,7 @@ package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.persona;
 import vista.formulario;
@@ -30,7 +31,10 @@ public class controladorPersonas implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         
         if(e.getSource() == vista.getBotonGuardar()){
-            this.guardarDatosCSV();
+            String mensaje = JOptionPane.showInputDialog(this);
+            int edad = Integer.parseInt(JOptionPane.showInputDialog(this));
+            //this.guardarDatosCSV();
+            persona.guardarDatos(new persona(mensaje, edad));
         }else if(e.getSource() == vista.getBotonMostrar()){
             this.mostrarDatosTabla();
         }else if(e.getSource() == vista.getBotonLimpiar()){
